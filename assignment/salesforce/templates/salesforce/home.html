@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>List of Users, Accounts and Contacts</title>
+        <meta charset="view=content-width">
+    </head>
+    <body>
+        <div style="margin:200px;margin-top: 50px;">
+            <center><h1>List of Users</h1></center>
+            <ol style="list-style-type: upper-roman;">
+                {% for x in users %}
+                <li>Name : {{x.name}} <br> Username : {{x.username}}</li><br>
+                {% endfor %}
+            </ol>
+        </div>
+        <div style="margin:200px;margin-top: 50px;">
+            <center><h1>List of Accounts</h1></center>
+            <ol style="list-style-type: upper-roman;">
+                {% for x in accounts %}
+                <li>Account Name : {{x.name}} <br> User name : {% for y in users %}{% if x.user_id == y.user_id %}{{y.name}}{% endif %}{% endfor %}</li><br>
+                {% endfor %}
+            </ol>
+        </div>
+        <div style="margin:200px;margin-top: 50px;">
+            <center><h1>List of Contacts</h1></center>
+            <ol style="list-style-type: upper-roman;">
+                {% for x in contacts %}
+                <li>Contact Name : {{x.name}} <br> Account Name : {% for y in accounts %}{% if x.account_id == y.account_id %}{{y.name}}{% endif %}{% endfor %}</li><br>
+                {% endfor %}
+            </ol>
+        </div>
+    </body>
+</html>
